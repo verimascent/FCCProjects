@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    height: 64px;
+    line-height: 64px;
+    overflow: hidden;
+    position: relative;
+}
+header img {
+    opacity: 0.5;
+    width: 200%;
+    position: absolute;
+    top: -27vw;
+    left: -55vw;
+}
+header h1 {
+    text-align: center;
+}
+
+main {
+    background-color: goldenrod;
+    padding-bottom: 2vw;
+}
+#img-div {
+    margin: 0 auto 1vw;
+    text-align: center;
+    font-size: 12px;
+    color: gray;
+}
+#img {
+    display: block;
+    width: 50%;
+    margin: 0 auto 5px;
+}
+
+.main_text {
+    width: 50vw;
+    margin: auto;
+}
+.main_text p {
+    margin: 2vw 0;
+}
+
+#tribute-info {
+    width: 100%;
+    background-color: gold;
+    padding-top: 2vw;
+    padding-bottom: 2vw;
+}
+#tribute-info p {
+    font-family: nytfonts;
+    margin: auto;
+    width: 50vw;
+}
+@font-face {
+    font-family: nytfonts;
+    src: url(fonts/NewYorkTimes.ttf);
+}
+
+.link {
+    height: 5vw;
+    line-height: 5vw;
+    text-align: center;
+    background-color: greenyellow;
+}
+
+footer {
+    color: white;
+    padding: 3vw;
+    height: 5vw;
+    line-height: 5vw;
+    text-align: center;
+    background-color: indigo;
+}
+@media screen and (max-width: 800px) {
+    #img {
+        width: 100%;
+    }
+    .main_text {
+        width: 80vw;
+    }
+    figcaption {
+        width: 90vw;
+        margin: auto;
+    }
+    #tribute-info p {
+        width: 80vw;
+        margin: auto;
+        padding-top: 3vw;
+        padding-bottom: 3vw;
+    }
+    .link {
+        padding: 5vw;
+        height: auto;
+        line-height: 5vw;
+    }
+    .link p {
+        margin: 5vw;
+    }
+}
