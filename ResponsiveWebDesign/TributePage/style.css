@@ -51,13 +51,19 @@ main {
     padding-bottom: 2vw;
 }
 #tribute-info p {
-    font-family: nytfonts;
+    font-family: myletterfont, numberpunctuationfont, Arial, Helvetica, sans-serif;
     margin: auto;
     width: 50vw;
 }
 @font-face {
-    font-family: nytfonts;
-    src: url(fonts/NewYorkTimes.ttf);
+    font-family: myletterfont;
+    src: url(fonts/GeraldinePersonalUseItalic-PK12m.ttf);
+    unicode-range: U+0041-005A, U+0061-007A;
+}
+@font-face {
+    font-family: numberpunctuationfont;
+    src: url(fonts/JellovySwitch-nRYLg.ttf);
+    unicode-range: U+21-40, U+5B-60, U+7C-7E;
 }
 
 .link {
