@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <title>Survey Form</title>
+</head>
+<body>
+    <header>
+    <h1 id="title">FCC Survey Form</h1>
+    <p id="description">This is a survey form online for FCC Project.</p>
+    </header>
+    <form action="" id="survey-form">
+        <div class="form-input">
+            <label for="name">Name*</label><br>
+            <input type="text" id="name" placeholder="Enter Your Name" required>
+        </div>
+        <div class="form-input">
+            <label for="email">Email*</label><br>
+            <input type="email" id="email" placeholder="Enter Your Email" required>
+        </div>
+        <div class="form-input">
+            <label for="number">Age</label><br>
+            <input type="number" id="number" placeholder="30" min="1" max="200">
+        </div>
+        <div class="form-input">
+            <label for="gender">Choose Your Gender: </label><br>
+            <select name="gender" id="gender" id="dropdown">
+                <option value="male">Male</option>
+                <option value="female" selected>Female</option>
+                <option value="others">Others</option>
+            </select>
+        </div>
+        <div class="form-input">
+            <p>Which country defeated Nazi in Stalingrad?</p>
+            <div>
+                <input type="radio" name="country" id="choice1" value="usa" checked>
+                <label for="choice1">United States</label>
+            </div><div>
+                <input type="radio" name="country" id="choice2" value="uk">
+                <label for="choice2">United Kingdom</label>
+            </div><div>
+                <input type="radio" name="country" id="choice3" value="ussr">
+                <label for="choice3">Soviet Union</label>
+            </div><div>
+                <input type="radio" name="country" id="choice4" value="fr">
+                <label for="choice4">France</label>
+            </div><div>
+                <input type="radio" name="country" id="choice5" value="cn">
+                <label for="choice5">China</label>
+            </div>
+        </div>
+        <div class="form-input">
+            <fieldset>
+                <legend>Please select ALL European countries.</legend>
+                <div>
+                    <input type="checkbox" name="euro" id="choice1" value="it">
+                    <label for="choice1">Italy</label>
+                </div><div>
+                    <input type="checkbox" name="euro" id="choice2" value="ca">
+                    <label for="choice2">Canada</label>
+                </div><div>
+                    <input type="checkbox" name="euro" id="choice3" value="br">
+                    <label for="choice3">Brazil</label>
+                </div><div>
+                    <input type="checkbox" name="euro" id="choice4" value="es">
+                    <label for="choice4">Spain</label>
+                </div><div>
+                    <input type="checkbox" name="euro" id="choice5" value="ie">
+                    <label for="choice5">Ireland</label>
+                </div><div>
+                    <input type="checkbox" name="euro" id="choice6" value="jp">
+                    <label for="choice6">Japan</label>
+                </div>
+            </fieldset>
+        </div>
+        <div class="form-input">
+            <label for="comment">Write your comments or suggestions here:</label>
+            <div>
+                <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
+            </div>
+        </div>
+        <div class="form-input">
+            <input type="submit" value="Submit" id="submit">
+        </div>
+    </form>
+</body>
+</html>
