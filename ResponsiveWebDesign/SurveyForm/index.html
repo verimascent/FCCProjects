@@ -5,29 +5,30 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <link rel="stylesheet" href="style.css">
     <title>Survey Form</title>
 </head>
 <body>
     <header>
-    <h1 id="title">FCC Survey Form</h1>
-    <p id="description">This is a survey form online for FCC Project.</p>
+        <h1 id="title">FCC Survey Form</h1>
+        <p id="description">This is a survey form online for FCC Project.</p>
     </header>
     <form action="" id="survey-form">
         <div class="form-input">
-            <label for="name">Name*</label><br>
+            <label for="name" id="name-label">Name*</label><br>
             <input type="text" id="name" placeholder="Enter Your Name" required>
         </div>
         <div class="form-input">
-            <label for="email">Email*</label><br>
+            <label for="email" id="email-label">Email*</label><br>
             <input type="email" id="email" placeholder="Enter Your Email" required>
         </div>
         <div class="form-input">
-            <label for="number">Age</label><br>
+            <label for="number" id="number-label">Age</label><br>
             <input type="number" id="number" placeholder="30" min="1" max="200">
         </div>
         <div class="form-input">
-            <label for="gender">Choose Your Gender: </label><br>
-            <select name="gender" id="gender" id="dropdown">
+            <label for="dropdown">Choose Your Gender: </label><br>
+            <select name="gender" id="dropdown">
                 <option value="male">Male</option>
                 <option value="female" selected>Female</option>
                 <option value="others">Others</option>
@@ -35,7 +36,7 @@
         </div>
         <div class="form-input">
             <p>Which country defeated Nazi in Stalingrad?</p>
-            <div>
+            <div class="radio-input">
                 <input type="radio" name="country" id="choice1" value="usa" checked>
                 <label for="choice1">United States</label>
             </div><div>
