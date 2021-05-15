@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Arizonia&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: burlywood;
+}
+
+.title {
+    display: flex;
+}
+
+#header-img {
+    display: block;
+    height: 3rem;
+    justify-self: flex-start;
+    margin: 1rem 1rem 1rem 1rem;
+}
+
+.company-name {
+    font-family: 'Arizonia', cursive;
+    justify-self: flex-start;
+    margin: 1rem 1rem 1rem 0rem;
+    line-height: 3rem;
+    font-size: 3rem;
+}
+
+#nav-bar {
+    display: flex;
+    width: 40%;
+    justify-content: flex-start;
+}
+#nav-bar div {
+    height: 3rem;
+    padding: 1rem;
+    background-color: orange;
+    border-right: white 2px solid;
+}
+
+#nav-bar div:last-child {
+    border-right: none;
+}
+
+.nav-link {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    line-height: 3rem;
+}
+
+@media screen and (max-width: 600px) {
+    #header {
+        flex-flow: column wrap;
+    }
+    #nav-bar {
+        flex-flow: column wrap;
+        width: 100%;
+    }
+    #nav-bar div {
+        border-right: none;
+        border-bottom: white 2px solid;
+        text-align: center;        
+    }
+    #nav-bar div:last-child {
+        border-bottom: none;
+    }
+    .nav-link {
+        text-align: center;
+    }
+}
