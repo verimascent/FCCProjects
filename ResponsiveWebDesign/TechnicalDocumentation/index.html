@@ -77,7 +77,7 @@
                 Python's large standard library, commonly cited as one of its greatest strengths, provides tools suited to many tasks. For Internet-facing applications, many standard formats and protocols such as MIME and HTTP are supported. It includes modules for creating graphical user interfaces, connecting to relational databases, generating pseudorandom numbers, arithmetic with arbitrary-precision decimals, manipulating regular expressions, and unit testing.
             </p><p>
                 Some parts of the standard library are covered by specifications (for example, the Web Server Gateway Interface (WSGI) implementation wsgiref follows PEP 333), but most modules are not. They are specified by their code, internal documentation, and test suites. However, because most of the standard library is cross-platform Python code, only a few modules need altering or rewriting for variant implementations.
-            </p>
+            </p><p>
                 As of March 2021, the Python Package Index (PyPI), the official repository for third-party Python software, contains over 290,000 packages with a wide range of functionality.
             </p>
         </section>
@@ -85,36 +85,34 @@
         <section class="main-section" id="Sample_Codes">
             <header>Sample Codes</header>
             <pre>
+                <code>print('Hello, world!')</code>
+
                 <code>
-                    print('Hello, world!')
+n = int(input('Type a number, and its factorial will be printed: '))
+
+if n &lt; 0:
+    raise ValueError('You must enter a non negative integer')
+
+factorial = 1
+for i in range(2, n + 1):
+    factorial *= i
+
+print(factorial)
+                </code>
+                <code>
+"""Spanning
+multiple
+lines"""
                 </code>
 
                 <code>
-                    n = int(input('Type a number, and its factorial will be printed: '))
-
-                    if n &lt; 0:
-                        raise ValueError('You must enter a non negative integer')
-
-                    factorial = 1
-                    for i in range(2, n + 1):
-                        factorial *= i
-
-                    print(factorial)
-                </code>
-                <code>
-                    """Spanning
-                    multiple
-                    lines"""
+bytearray(b'Some ASCII')
+bytearray(b"Some ASCII")
+bytearray([119, 105, 107, 105])
                 </code>
 
                 <code>
-                    bytearray(b'Some ASCII')
-                    bytearray(b"Some ASCII")
-                    bytearray([119, 105, 107, 105])
-                </code>
-
-                <code>
-                    frozenset([4.0, 'string', True])
+frozenset([4.0, 'string', True])
                 </code>
             </pre>
         </section>

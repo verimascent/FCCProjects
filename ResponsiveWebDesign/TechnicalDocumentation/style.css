@@ -40,6 +40,12 @@ pre {
     border-radius: 5rem;
 }
 
+code {
+    margin: 0 auto;
+    white-space: pre-wrap;
+    display: block;
+    width: 50vw;
+}
 #navbar {
     position: fixed;
     left: 0;
@@ -84,18 +90,30 @@ pre {
 
 @media screen and (max-width: 600px) {
     main {
-        margin: 2rem auto;
+        margin: 32vh 10vw 2rem;
     }
     #navbar {
         position: fixed;
         left: 0;
         top: 0;
-        width: none;
-        display: flex;
-        flex-flow: column wrap;
-        padding: none;
+        width: 100vw;
+        height: 30vh;
+        overflow-y: scroll;
     }
     #navbar header {
         font-size: 1rem;
     }
+    pre {
+        width: 80vw;
+        height: 50vh;
+        overflow-y: scroll;
+        margin: 1rem auto;
+    }
+    code {
+        margin: 0 auto;
+        white-space: pre-wrap;
+        display: block;
+        width: 50vw;
+    }
+   
 }
