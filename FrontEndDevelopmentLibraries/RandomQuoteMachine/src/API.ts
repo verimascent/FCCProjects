@@ -1,12 +1,12 @@
-export type Quotes = {
-    _id: string;
-    tags: string[];
-    content: string;
-    author: string;
-    authorSlug: string;
-    length: number;
-    dateAdded: string;
-    dateModified: string;
+export class Quotes {
+    _id: string = "";
+    tags: string[] = [];
+    content: string = "";
+    author: string = "";
+    authorSlug: string = "";
+    length: number = 0;
+    dateAdded: string = "";
+    dateModified: string = "";
 }
 
 export const fetchQuotes = async() => {

@@ -1,20 +1,23 @@
 import React from 'react';
 
-type Props = {
+interface Props {
     author: string;
     quote: string;
+    callback: React.MouseEventHandler;
 }
 
-const QuotesCard: React.FC<Props> = ({
+const QuotesCard: React.FunctionComponent<Props> = ({
     author,
-    quote
+    quote,
+    callback
 }) => {
+    
     return (
     <div>
         <div id="quote-box">
-          <div id="text"></div>
-          <div id="author"></div>
-          <button id="new-quote" />
+          <div id="text">This is a quote: {quote}</div>
+          <div id="author">This is author: {author}</div>
+          <button id="new-quote" onClick={callback}>New Quote</button>
         </div>
     </div>
     )}
