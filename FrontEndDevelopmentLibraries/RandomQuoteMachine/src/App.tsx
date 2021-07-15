@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {fetchQuotes, Quotes} from './API';
-import QuotesCard from './components/QuotesCard'
+import { GlobalStyle, Wrapper } from './App.styles';
+import QuotesCard from './components/QuotesCard';
 
 const App: React.FunctionComponent = () => {
   const [loading, setLoading] = useState(false);
@@ -11,6 +12,16 @@ const App: React.FunctionComponent = () => {
     const newQuote = await fetchQuotes();   
     setQuote(newQuote);
   }
+
+  const generateNewColor = () => {
+    let a: number = Math.floor(Math.random() * 256);
+    let b: number = Math.floor(Math.random() * 256);
+    let c: number = Math.floor(Math.random() * 256);
+    let newColor: string = `rgba(${a}, ${b}, ${c}, 1)`;
+    return newColor;
+  }
+
+  const newColor = generateNewColor();
 
   // initialize the quote card
   useEffect(() => {generateNewQuote()}, [])
@@ -26,12 +37,15 @@ const App: React.FunctionComponent = () => {
   });
   return (
     <>
-      <div id="background">
-        <QuotesCard
-          author={quote.author}
-          quote={quote.content}
-          callback={generateNewQuote} />
-      </div>
+      <GlobalStyle /> 
+        <Wrapper color={newColor}>
+          <QuotesCard
+            author={quote.author}
+            quote={quote.content}
+            callback={generateNewQuote} 
+            />
+        </Wrapper>
+
     </>
   );
 }

@@ -6,10 +6,13 @@ export const GlobalStyle = createGlobalStyle`
         margin: 0;
         box-sizing: border-box;
     }
-
-    body {
-        display: flex;
-        justify-content: center;
-    }
 `;
+
+export const Wrapper = styled.body`
+
+    display: flex;
+    background-color: ${props => props.color};
+    height: 100vh;
+    justify-content: center;
+`
 
