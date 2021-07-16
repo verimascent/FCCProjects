@@ -8,7 +8,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 `;
 
-export const Wrapper = styled.body`
+export const BodyWrapper = styled.body`
 
     display: flex;
     background-color: ${props => props.color};

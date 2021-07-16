@@ -9,7 +9,7 @@ export class Quotes {
     dateModified: string = "";
 }
 
-export const fetchQuotes = async() => {
+export const fetchQuotes: () => Promise<Quotes> = async () => {
     const url: string = "https://api.quotable.io/random";
     const getUrl: Response = await fetch(url);
     const data: Quotes = await getUrl.json();

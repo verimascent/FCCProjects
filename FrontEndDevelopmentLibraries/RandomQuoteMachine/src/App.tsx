@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {fetchQuotes, Quotes} from './API';
-import { GlobalStyle, Wrapper } from './App.styles';
+import { GlobalStyle, BodyWrapper } from './App.styles';
 import QuotesCard from './components/QuotesCard';
 
 const App: React.FunctionComponent = () => {
@@ -13,38 +13,40 @@ const App: React.FunctionComponent = () => {
     setQuote(newQuote);
   }
 
-  const generateNewColor = () => {
+  const generateNewColor: () => string[] = () => {
     let a: number = Math.floor(Math.random() * 256);
     let b: number = Math.floor(Math.random() * 256);
     let c: number = Math.floor(Math.random() * 256);
-    let newColor: string = `rgba(${a}, ${b}, ${c}, 1)`;
+    let color: string = `rgba(${a}, ${b}, ${c}, 1)`;
+    let colorOther: string = `rgba(${255-a}, ${255-b}, ${255-c}, 1)`;
+    let newColor: string[] = [color, colorOther];
     return newColor;
   }
 
-  const newColor = generateNewColor();
+  const newColor: string[] = generateNewColor();
 
   // initialize the quote card
   useEffect(() => {generateNewQuote()}, [])
 
   // make the quote change automatically
-  useEffect(() => {
-    const timeQuote: NodeJS.Timeout = setInterval(() => {
-      generateNewQuote();
-    }, 10000);
+  // useEffect(() => {
+  //   const timeQuote: NodeJS.Timeout = setInterval(() => {
+  //     generateNewQuote();
+  //   }, 100000);
 
-    // avoid that the timer becomes faster and faster, clear the time interval before
-    return () => clearInterval(timeQuote)
-  });
+  //   // avoid that the timer becomes faster and faster, clear the time interval before
+  //   return () => clearInterval(timeQuote)
+  // });
   return (
     <>
       <GlobalStyle /> 
-        <Wrapper color={newColor}>
+        <BodyWrapper color={newColor[0]}>
           <QuotesCard
             author={quote.author}
             quote={quote.content}
             callback={generateNewQuote} 
-            />
-        </Wrapper>
+            colors = {newColor} />
+        </BodyWrapper>
 
     </>
   );
