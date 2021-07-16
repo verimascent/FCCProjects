@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentWrapper } from './QuotesCard.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook } from '@fortawesome/free-brands-svg-icons'
+import { faTwitter } from '@fortawesome/free-brands-svg-icons'
   
  
 interface Props {
@@ -25,11 +25,16 @@ const QuotesCard: React.FunctionComponent<Props> = ({
                     <div id="quote-box">
                         <div id="text">{quote}</div>
                         <div id="author">- {author}</div>
+                        <div className="button-box">
+                            <div className="twitter">
+                                <a href="https://twitter.com/intent/tweet" id="tweet-quote" target="_blank">
+                                    <FontAwesomeIcon icon={faTwitter} />
+                                </a>
+                            </div>
+                            <button id="new-quote" onClick={callback}>New Quote</button>
+                        </div>
                     </div>
-                    <div className="button-box">
-                    <FontAwesomeIcon icon={faFacebook} />
-                        <button id="new-quote" onClick={callback}>New Quote</button>
-                    </div>
+                    
                 </div>
             </ComponentWrapper>
         </>
