@@ -5,28 +5,34 @@ import QuotesCard from './components/QuotesCard';
 
 const App: React.FunctionComponent = () => {
   const [loading, setLoading] = useState(false);
+  const [flip, setFlip] = useState(true);
   const [quote, setQuote] = useState<Quotes>(new Quotes())
+  const [colors, setColors] = useState<string[]>([]);
 
   const generateNewQuote: () => Promise<void> = async() => {
     setLoading(true);
+    setFlip(!flip);
     const newQuote = await fetchQuotes();   
     setQuote(newQuote);
+    setLoading(false);
   }
 
-  const generateNewColor: () => string[] = () => {
+  const generateNewColor: () => void = () => {
     let a: number = Math.floor(Math.random() * 256);
     let b: number = Math.floor(Math.random() * 256);
     let c: number = Math.floor(Math.random() * 256);
     let color: string = `rgba(${a}, ${b}, ${c}, 1)`;
     let colorOther: string = `rgba(${255-a}, ${255-b}, ${255-c}, 1)`;
     let newColor: string[] = [color, colorOther];
-    return newColor;
+
+    setColors(newColor);
   }
 
-  const newColor: string[] = generateNewColor();
+  // const newColor: string[] = generateNewColor();
 
   // initialize the quote card
-  useEffect(() => {generateNewQuote()}, [])
+  useEffect(() => {generateNewQuote()}, []);
+  useEffect(() => generateNewColor(), [flip]);
 
   // make the quote change automatically
   // useEffect(() => {
@@ -40,12 +46,13 @@ const App: React.FunctionComponent = () => {
   return (
     <>
       <GlobalStyle /> 
-        <BodyWrapper color={newColor[0]}>
+        <BodyWrapper color={colors[0]}>
           <QuotesCard
             author={quote.author}
             quote={quote.content}
             callback={generateNewQuote} 
-            colors = {newColor} />
+            colors = {colors}
+            isLoading = {loading} />
         </BodyWrapper>
 
     </>

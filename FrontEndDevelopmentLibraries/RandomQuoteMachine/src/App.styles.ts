@@ -14,5 +14,5 @@ export const BodyWrapper = styled.body`
     background-color: ${props => props.color};
     height: 100vh;
     justify-content: center;
-`
+`;
 
