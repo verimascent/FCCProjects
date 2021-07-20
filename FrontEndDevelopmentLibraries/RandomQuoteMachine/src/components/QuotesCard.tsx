@@ -2,14 +2,15 @@ import React from 'react';
 import { ComponentWrapper } from './QuotesCard.styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons'
-import ContentLoader, { Facebook } from 'react-content-loader'
+import ContentLoader from 'react-content-loader'
  
 interface Props {
     author: string;
     quote: string;
     callback: React.MouseEventHandler;
-    colors: string[];
+    colors: string[][];
     isLoading: boolean;
+    fade: boolean;
 }
 
 const QuotesCard: React.FunctionComponent<Props> = ({
@@ -17,7 +18,8 @@ const QuotesCard: React.FunctionComponent<Props> = ({
     quote,
     callback,
     colors,
-    isLoading
+    isLoading,
+    fade,
 }) => {
     
 const MyLoader = () => (
@@ -36,7 +38,7 @@ const MyLoader = () => (
   );
     return (
         <>
-            <ComponentWrapper col={colors}>
+            <ComponentWrapper col={colors} fade={fade} >
                 <div id="background">
                     <div id="quote-box">
                         {!isLoading && (

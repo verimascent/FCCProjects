@@ -7,7 +7,8 @@ const App: React.FunctionComponent = () => {
   const [loading, setLoading] = useState(false);
   const [flip, setFlip] = useState(true);
   const [quote, setQuote] = useState<Quotes>(new Quotes())
-  const [colors, setColors] = useState<string[]>([]);
+  const [colors, setColors] = useState<Array<Array<string>>>([[]]);
+  const [isFadeOut, setIsFadeOut] = useState(false);
 
   const generateNewQuote: () => Promise<void> = async() => {
     setLoading(true);
@@ -17,22 +18,62 @@ const App: React.FunctionComponent = () => {
     setLoading(false);
   }
 
-  const generateNewColor: () => void = () => {
+  const generateNewColor: () => string[] = () => {
     let a: number = Math.floor(Math.random() * 256);
     let b: number = Math.floor(Math.random() * 256);
     let c: number = Math.floor(Math.random() * 256);
     let color: string = `rgba(${a}, ${b}, ${c}, 1)`;
     let colorOther: string = `rgba(${255-a}, ${255-b}, ${255-c}, 1)`;
     let newColor: string[] = [color, colorOther];
-
-    setColors(newColor);
+    
+    return newColor;
+    
+    
   }
 
   // const newColor: string[] = generateNewColor();
 
+  
   // initialize the quote card
-  useEffect(() => {generateNewQuote()}, []);
-  useEffect(() => generateNewColor(), [flip]);
+  
+  useEffect(() => {
+    // generateNewColor();
+    // generateNewQuote();
+    console.log("colors: " + colors);
+    setColors(prev => {
+      console.log("prev: " + prev);
+      const colorGenerate: string[] = generateNewColor();
+      const myColors: Array<Array<string>> = [];
+      myColors.push(colorGenerate);
+      console.log("myColors: " + myColors);
+      const myPrev = [...prev];
+      const newColors: string[][] = myColors.concat(myPrev);
+      if (newColors.length > 2){
+        newColors.pop();
+      }
+      console.log("myColorsConcat: " + newColors);
+      
+      
+      return newColors;
+    });
+    console.log("CLORS" +colors)
+  }
+  , [flip]);
+
+  useEffect(() => {
+    // generateNewColor();
+    generateNewQuote();
+    // console.log(colors);
+  }
+  , []);
+
+  
+  // useEffect(() => {
+  //   generateNewQuote();
+  //   generateNewColor();
+  // }
+    
+  // , [flip]);
 
   // make the quote change automatically
   // useEffect(() => {
@@ -46,13 +87,16 @@ const App: React.FunctionComponent = () => {
   return (
     <>
       <GlobalStyle /> 
-        <BodyWrapper color={colors[0]}>
+        <BodyWrapper colorBody={colors}>
+          <div id="body-warpper">
           <QuotesCard
             author={quote.author}
             quote={quote.content}
             callback={generateNewQuote} 
             colors = {colors}
-            isLoading = {loading} />
+            isLoading = {loading}
+            fade = {isFadeOut} />
+          </div>
         </BodyWrapper>
 
     </>

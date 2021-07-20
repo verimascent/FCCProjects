@@ -1,23 +1,37 @@
 import styled from 'styled-components';
 
 interface IComponentWrapper {
-    col: string[];
+    col: string[][];
+    fade: boolean;
 }
 
 export const ComponentWrapper = styled.div<IComponentWrapper>`
     align-self: center;
 
     #background {
-        background-color: ${props => props.col[1]};
+        background-color: ${props => props.col[0][0]};
         width: 60vw;
         min-height: 10rem;
         display: flex;
         flex-direction: column;
         border-radius: 3rem;
+        animation: changeColor 3s ease;
+        
+    }
+
+    @keyframes changeColor {
+        from {
+            background-color: ${props => { if (props.col.length == 2) return props.col[1][0];
+                                           else return props.col[0][0] }};
+        }
+        to {
+            background-color: ${props => props.col[0][0]};
+        }
     }
 
     #quote-box {
-        color: ${props => props.col[0]};
+        color: ${props => { if (props.col.length == 2) return props.col[1][1];
+                            else return props.col[0][1] }};
         align-self: stretch;
         width: auto;
         height: 100%;
@@ -35,6 +49,37 @@ export const ComponentWrapper = styled.div<IComponentWrapper>`
         align-self: flex-end;
         width: fit-content;
         font-size: 0.9rem;
+    }
+
+    #text, #author {
+        animation: fadeInOut 1s;
+        transition: opacity 1s ease;
+    }
+
+    @keyframes fadeInOut {
+        from {
+            opacity: ${props => {
+                if (props.fade){
+                    return 1;
+                }
+                else {
+                    return 0;
+                }
+
+            }};
+        }
+
+        to {
+            opacity: ${props => {
+                if (props.fade){
+                    return 0;
+                }
+                else {
+                    return 1;
+                }
+
+            }};
+        }
     }
 
     .button-box {

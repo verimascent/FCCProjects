@@ -8,11 +8,26 @@ export const GlobalStyle = createGlobalStyle`
     }
 `;
 
-export const BodyWrapper = styled.body`
+interface IColors {
+    colorBody: string[][];
+}
 
-    display: flex;
-    background-color: ${props => props.color};
+export const BodyWrapper = styled.div<IColors>`
+
+    #body-wrapper { display: flex;
+    animation: changeColor 3s ease;
     height: 100vh;
     justify-content: center;
+    background-color: ${props => props.colorBody[0][0] };
+    }
+
+    @keyframes changeColor {
+        from { background-color: ${props => { if (props.colorBody.length === 2) return props.colorBody[1][0];
+                                   else return props.colorBody[0][0] }};
+        }
+        to {
+            background-color: ${props => props.colorBody[0][0] }};
+        }
+    
 `;
 
