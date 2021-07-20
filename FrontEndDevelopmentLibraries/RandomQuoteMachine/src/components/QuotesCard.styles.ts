@@ -1,37 +1,45 @@
-import styled from 'styled-components';
+import styled, { keyframes, Keyframes } from 'styled-components';
 
 interface IComponentWrapper {
     col: string[][];
     fade: boolean;
 }
 
+const changeColor: (props: any) => Keyframes = (props: any) => keyframes`
+    from {
+        background-color: ${ props.col.length === 2 ? props.col[1][1] : props.col[0][1]};
+    }
+    to {
+        background-color: ${props.col[0][1]};
+    }
+`;
+
+const fadeInOut = (props: any) => keyframes`
+    from {
+            opacity: ${ props.fade ? 1 : 0 }
+    }
+
+    to {
+            opacity: ${ props.fade ? 0 : 1 }
+    }
+`
+
 export const ComponentWrapper = styled.div<IComponentWrapper>`
     align-self: center;
 
     #background {
-        background-color: ${props => props.col[0][0]};
+        /* background-color: $; */
         width: 60vw;
         min-height: 10rem;
         display: flex;
         flex-direction: column;
         border-radius: 3rem;
-        animation: changeColor 3s ease;
+        animation: ${changeColor} 1.5s ease forwards;
         
     }
 
-    @keyframes changeColor {
-        from {
-            background-color: ${props => { if (props.col.length == 2) return props.col[1][0];
-                                           else return props.col[0][0] }};
-        }
-        to {
-            background-color: ${props => props.col[0][0]};
-        }
-    }
-
     #quote-box {
-        color: ${props => { if (props.col.length == 2) return props.col[1][1];
-                            else return props.col[0][1] }};
+        color: ${props => props.col[0][0] };
         align-self: stretch;
         width: auto;
         height: 100%;
@@ -52,34 +60,8 @@ export const ComponentWrapper = styled.div<IComponentWrapper>`
     }
 
     #text, #author {
-        animation: fadeInOut 1s;
-        transition: opacity 1s ease;
-    }
-
-    @keyframes fadeInOut {
-        from {
-            opacity: ${props => {
-                if (props.fade){
-                    return 1;
-                }
-                else {
-                    return 0;
-                }
-
-            }};
-        }
-
-        to {
-            opacity: ${props => {
-                if (props.fade){
-                    return 0;
-                }
-                else {
-                    return 1;
-                }
-
-            }};
-        }
+        animation: ${fadeInOut} 5s;
+        /* transition: opacity 1s ease; */
     }
 
     .button-box {

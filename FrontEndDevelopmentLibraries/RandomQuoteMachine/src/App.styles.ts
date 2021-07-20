@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, Keyframes, keyframes } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -12,22 +12,22 @@ interface IColors {
     colorBody: string[][];
 }
 
-export const BodyWrapper = styled.div<IColors>`
+const changeColor: (props: any) => Keyframes = (props: any) => keyframes`
+    from {
+        background-color: ${ props.colorBody == undefined? "rgb(255,255,255)" : 
+                             props.colorBody.length === 2 ? props.colorBody[1][0] : props.colorBody[0][0] };
+    }
+    to {
+        background-color: ${props.colorBody == undefined ? "rgb(255, 255, 255)" : props.colorBody[0][0]};
+    }
+`;
 
-    #body-wrapper { display: flex;
-    animation: changeColor 3s ease;
+export const BodyWrapper = styled.body<IColors>`
+
+    display: flex;
+    animation: ${changeColor} 1.5s ease forwards;
     height: 100vh;
     justify-content: center;
-    background-color: ${props => props.colorBody[0][0] };
-    }
-
-    @keyframes changeColor {
-        from { background-color: ${props => { if (props.colorBody.length === 2) return props.colorBody[1][0];
-                                   else return props.colorBody[0][0] }};
-        }
-        to {
-            background-color: ${props => props.colorBody[0][0] }};
-        }
-    
+   
 `;
 

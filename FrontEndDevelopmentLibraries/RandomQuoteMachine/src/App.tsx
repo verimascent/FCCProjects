@@ -11,6 +11,7 @@ const App: React.FunctionComponent = () => {
   const [isFadeOut, setIsFadeOut] = useState(false);
 
   const generateNewQuote: () => Promise<void> = async() => {
+    // setTimeOut previousState fadeOut we should set isFadeOut 
     setLoading(true);
     setFlip(!flip);
     const newQuote = await fetchQuotes();   
@@ -39,24 +40,18 @@ const App: React.FunctionComponent = () => {
   useEffect(() => {
     // generateNewColor();
     // generateNewQuote();
-    console.log("colors: " + colors);
     setColors(prev => {
-      console.log("prev: " + prev);
       const colorGenerate: string[] = generateNewColor();
       const myColors: Array<Array<string>> = [];
       myColors.push(colorGenerate);
-      console.log("myColors: " + myColors);
       const myPrev = [...prev];
       const newColors: string[][] = myColors.concat(myPrev);
       if (newColors.length > 2){
         newColors.pop();
       }
-      console.log("myColorsConcat: " + newColors);
-      
       
       return newColors;
     });
-    console.log("CLORS" +colors)
   }
   , [flip]);
 
@@ -88,7 +83,6 @@ const App: React.FunctionComponent = () => {
     <>
       <GlobalStyle /> 
         <BodyWrapper colorBody={colors}>
-          <div id="body-warpper">
           <QuotesCard
             author={quote.author}
             quote={quote.content}
@@ -96,7 +90,6 @@ const App: React.FunctionComponent = () => {
             colors = {colors}
             isLoading = {loading}
             fade = {isFadeOut} />
-          </div>
         </BodyWrapper>
 
     </>
