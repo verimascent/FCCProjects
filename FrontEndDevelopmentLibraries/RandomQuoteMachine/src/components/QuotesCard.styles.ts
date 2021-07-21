@@ -60,7 +60,7 @@ export const ComponentWrapper = styled.div<IComponentWrapper>`
     }
 
     #text, #author {
-        animation: ${fadeInOut} 5s;
+        animation: ${fadeInOut} 1s;
         /* transition: opacity 1s ease; */
     }
 

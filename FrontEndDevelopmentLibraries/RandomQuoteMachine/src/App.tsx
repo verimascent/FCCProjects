@@ -32,6 +32,14 @@ const App: React.FunctionComponent = () => {
     
   }
 
+  const handleClick = () => {
+    setIsFadeOut(true);
+    setTimeout(() => {
+      generateNewQuote();
+      setIsFadeOut(false);
+    }, 800);
+    
+  }
   // const newColor: string[] = generateNewColor();
 
   
@@ -86,7 +94,7 @@ const App: React.FunctionComponent = () => {
           <QuotesCard
             author={quote.author}
             quote={quote.content}
-            callback={generateNewQuote} 
+            callback={handleClick} 
             colors = {colors}
             isLoading = {loading}
             fade = {isFadeOut} />
@@ -94,6 +102,6 @@ const App: React.FunctionComponent = () => {
 
     </>
   );
-}
+};
 
 export default App;
